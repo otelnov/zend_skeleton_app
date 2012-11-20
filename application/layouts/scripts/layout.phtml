@@ -23,6 +23,15 @@
 	</head>
 	<body>
 		<div class="container">
+			<?php
+				if (Zend_Auth::getInstance()->hasIdentity()) {
+					$url = $this->url(array('controller'=>'auth', 'action'=>'logout'));
+					echo "<a href=\"{$url}\">Logout</a>";
+				}else{
+					$url = $this->url(array('controller'=>'auth', 'action'=>'login'));
+					echo "<a href=\"{$url}\">Login</a>";
+				}
+			?>
 			<h1>
 				<?php echo $this->escape($this->title);	?>
 			</h1>
